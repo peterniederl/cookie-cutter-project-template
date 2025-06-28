@@ -1,3 +1,5 @@
+import os
+import json
 import re
 
 def validate_input(context):
@@ -21,5 +23,13 @@ def validate_input(context):
     if any(char.isdigit() for char in author_name):
         raise ValueError("author_name must not contain digits.")
 
-# The variable `cookiecutter` is injected by Cruft and available globally
-validate_input(cookiecutter)
+# Try loading from the generated `cookiecutter.json` context
+context_path = os.path.join(os.getcwd(), "cookiecutter.json")
+
+if not os.path.exists(context_path):
+    raise FileNotFoundError("Could not find cookiecutter.json to extract context.")
+
+with open(context_path) as f:
+    context = json.load(f)
+
+validate_input(context)
