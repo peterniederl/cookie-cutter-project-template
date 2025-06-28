@@ -2,10 +2,12 @@ import re
 
 def validate_input(context):
     # Validate project_name
+    print("Context:", context)
     project_name = context.get("project_name", "")
     if not isinstance(project_name, str):
         raise ValueError("project_name must be a string.")
     if len(project_name) <= 5:
+        print("Project name:", project_name)
         raise ValueError("project_name must be longer than 5 characters.")
     if project_name[0].isdigit():
         raise ValueError("project_name must not start with a digit.")
