@@ -1,0 +1,9 @@
+{
+  "project_name": "template_project",
+  "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
+  "package_name": "my_package",
+  "author_name": "Peter Niederl",
+  "email": "peter.niederl.it@gmx.at",
+  "python_version": "3.11",
+  "license": "MIT"
+}
